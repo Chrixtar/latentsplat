@@ -6,6 +6,8 @@ This is the code for **latentSplat: Autoencoding Variational Gaussians for Fast 
 
 Check out the [project website here](https://geometric-rl.mpi-inf.mpg.de/latentsplat/).
 
+https://github.com/Chrixtar/latentsplat/assets/38473808/c7976773-16ad-4ef1-9526-29ae46221549
+
 ## Installation
 
 To get started, create a conda environment:
