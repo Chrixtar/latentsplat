@@ -1,0 +1,54 @@
+# @package _global_
+
+defaults:
+  - override /dataset: co3d_teddybear
+
+dataset:
+  view_sampler:
+    index_path: assets/evaluation_index/co3d_teddybear_360.json
+
+evaluation:
+  methods:
+    name: Ours
+    key: ours
+    path: outputs/render_uncertainty/co3d_teddybear_360_kl
+  modalities:
+    - name: Prediction
+      key: pred
+    - name: Auxiliary
+      key: aux
+    - name: Features
+      key: latent
+    - name: Uncertainty
+      key: std
+
+  side_by_side_path: comparisons/co3d_teddybear_360
+  animate_side_by_side: false
+  highlighted:
+    - scene: '38_1655_5016'
+      context_index: [18, 36]
+      target_index: 16
+    - scene: '38_1655_5016'
+      context_index: [18, 36]
+      target_index: 36
+    - scene: '38_1655_5016'
+      context_index: [18, 36]
+      target_index: 60
+    - scene: '38_1655_5016'
+      context_index: [18, 36]
+      target_index: 90
+    - scene: '392_47587_94612'
+      context_index: [13, 34]
+      target_index: 24
+    - scene: '392_47587_94612'
+      context_index: [13, 34]
+      target_index: 43
+    - scene: '392_47587_94612'
+      context_index: [13, 34]
+      target_index: 55
+    - scene: '392_47587_94612'
+      context_index: [13, 34]
+      target_index: 80
+
+output_metrics_path: baselines/co3d_teddybear_360/evaluation_metrics.json
+per_scene_metrics_path: baselines/co3d_teddybear_360/per_scene_metrics.json

@@ -1,0 +1,54 @@
+# @package _global_
+
+defaults:
+  - override /dataset: co3d_hydrant
+
+dataset:
+  view_sampler:
+    index_path: assets/evaluation_index/co3d_hydrant_360.json
+
+evaluation:
+  methods:
+    name: Ours
+    key: ours
+    path: outputs/render_uncertainty/co3d_hydrant_360_kl
+  modalities:
+    - name: Prediction
+      key: pred
+    - name: Auxiliary
+      key: aux
+    - name: Features
+      key: latent
+    - name: Uncertainty
+      key: std
+
+  side_by_side_path: null
+  animate_side_by_side: false
+  highlighted:
+    - scene: '304_31882_60482'
+      context_index: [44, 68]
+      target_index: 14
+    - scene: '304_31882_60482'
+      context_index: [44, 68]
+      target_index: 38
+    - scene: '304_31882_60482'
+      context_index: [44, 68]
+      target_index: 60
+    - scene: '304_31882_60482'
+      context_index: [44, 68]
+      target_index: 82
+    - scene: '417_57776_111531'
+      context_index: [16, 40]
+      target_index: 10
+    - scene: '417_57776_111531'
+      context_index: [16, 40]
+      target_index: 30
+    - scene: '417_57776_111531'
+      context_index: [16, 40]
+      target_index: 48
+    - scene: '417_57776_111531'
+      context_index: [16, 40]
+      target_index: 71
+
+output_metrics_path: baselines/co3d_hydrant_360/evaluation_metrics.json
+per_scene_metrics_path: baselines/co3d_hydrant_360/per_scene_metrics.json

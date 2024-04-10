@@ -1,0 +1,63 @@
+# @package _global_
+
+defaults:
+  - override /dataset: co3d_teddybear
+
+dataset:
+  view_sampler:
+    index_path: assets/evaluation_index/co3d_teddybear_extra.json
+
+evaluation:
+  methods:
+    - name: Ours
+      key: ours
+      path: outputs/test/co3d_teddybear_extra
+    - name: pixelSplat~\cite{charatan23pixelsplat}
+      key: pixelsplat
+      path: pixelsplat/outputs/test/co3d_teddybear_extra
+    - name: Du et al.~\cite{cross_attn}
+      key: du2023
+      path: cross_attention_renderer/eval_outputs_co3d_teddybear_extra
+    - name: pixelNeRF~\cite{yu2021pixelnerf}
+      key: pixelnerf
+      path: pixel-nerf/rendered_images_co3d_teddybear_extra
+
+  side_by_side_path: null
+  animate_side_by_side: false
+  highlighted:
+# Paper
+    - scene: '42_2005_6243'
+      context_index: [45, 61]
+      target_index: 73
+    - scene: '394_48549_96025'
+      context_index: [72, 95]
+      target_index: 25
+
+# Supplement
+    - scene: '380_44884_89715'
+      context_index: [53, 76]
+      target_index: 78
+    - scene: '380_44884_89715'
+      context_index: [3, 25]
+      target_index: 37
+    - scene: '350_36971_69346'
+      context_index: [6, 30]
+      target_index: 98
+    - scene: '380_44929_89749'
+      context_index: [44, 64]
+      target_index: 94
+    - scene: '38_1655_5016'
+      context_index: [18, 36]
+      target_index: 79
+    - scene: '392_47435_94355'
+      context_index: [27, 46]
+      target_index: 63
+    - scene: '392_47649_94685'
+      context_index: [33, 56]
+      target_index: 61
+    - scene: '379_44710_89287'
+      context_index: [78, 99]
+      target_index: 0 
+
+output_metrics_path: baselines/co3d_teddybear_extra/evaluation_metrics.json
+per_scene_metrics_path: baselines/co3d_teddybear_extra/per_scene_metrics.json

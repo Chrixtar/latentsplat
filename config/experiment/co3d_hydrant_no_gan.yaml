@@ -1,0 +1,34 @@
+# @package _global_
+
+defaults:
+  - override /dataset: co3d_hydrant
+  - override /model/autoencoder: kl_f8_skip
+  - override /model/encoder: epipolar
+
+model:
+  autoencoder:
+    skip_connections: true
+  encoder:
+    epipolar_transformer:
+      downscale: 4
+      self_attention:
+        patch_size: 4
+  supersampling_factor: 8
+  variational: gaussians
+
+loss:
+  target:
+    render:
+      image:
+        nll:
+          - {name: mse, weight: 10}
+          - {name: lpips, weight: 0.5, apply_after_step: 50_000}
+    combined:
+      nll:
+        - {name: l1, apply_after_step: 100_000}
+        - {name: lpips, apply_after_step: 100_000}
+
+wandb:
+  name: co3d_hydrant_no_gan
+  tags: [co3d, 256x256]
+  # activated: true

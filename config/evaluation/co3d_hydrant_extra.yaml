@@ -1,0 +1,67 @@
+# @package _global_
+
+defaults:
+  - override /dataset: co3d_hydrant
+
+dataset:
+  view_sampler:
+    index_path: assets/evaluation_index/co3d_hydrant_extra.json
+
+evaluation:
+  methods:
+    - name: Ours
+      key: ours
+      path: outputs/test/co3d_hydrant_extra
+    - name: pixelSplat~\cite{charatan23pixelsplat}
+      key: pixelsplat
+      path: pixelsplat/outputs/test/co3d_hydrant_extra
+    - name: Du et al.~\cite{cross_attn}
+      key: du2023
+      path: cross_attention_renderer/eval_outputs_co3d_hydrant_extra
+    - name: pixelNeRF~\cite{yu2021pixelnerf}
+      key: pixelnerf
+      path: pixel-nerf/rendered_images_co3d_hydrant_extra
+
+  side_by_side_path: null
+  animate_side_by_side: false
+  highlighted:
+# Teaser
+    - scene: '417_57776_111531'
+      context_index: [66, 84]
+      target_index: [38, 86]
+# Paper
+    - scene: '235_24641_51707'
+      context_index: [46, 63]
+      target_index: 13
+    - scene: '413_56508_109210'
+      context_index: [14, 96]
+      target_index: 31
+
+# Supplement
+    - scene: '421_58398_112543'
+      context_index: [4, 20]
+      target_index: 42
+    - scene: '185_19990_38942'
+      context_index: [61, 85]
+      target_index: 14
+    - scene: '429_60361_116957'
+      context_index: [45, 69]
+      target_index: 86
+    - scene: '429_60517_117787'
+      context_index: [39, 59]
+      target_index: 24
+    - scene: '417_57592_110774'
+      context_index: [34, 54]
+      target_index: 26
+    - scene: '417_57776_111531'
+      context_index: [16, 40]
+      target_index: 62
+    - scene: '304_31882_60482'
+      context_index: [3, 86]
+      target_index: 13
+    - scene: '304_31880_60480'
+      context_index: [12, 97]
+      target_index: 70
+
+output_metrics_path: baselines/co3d_hydrant_extra/evaluation_metrics.json
+per_scene_metrics_path: baselines/co3d_hydrant_extra/per_scene_metrics.json

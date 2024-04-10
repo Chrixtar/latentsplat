@@ -1,0 +1,41 @@
+name: latentsplat
+channels:
+  - pytorch
+  - nvidia
+  - defaults
+dependencies:
+  - pip=23.3.1
+  - python=3.10.13
+  - pytorch=2.1.2
+  - torchaudio=2.1.2
+  - torchvision=0.16.2
+  - wheel=0.41.2
+  - pip:
+      - beartype==0.16.4
+      - black==23.12.1
+      - colorama==0.4.6
+      - colorspacious==1.1.2
+      - dacite==1.8.1
+      - diffusers==0.25.1
+      - dists-pytorch==0.1
+      - e3nn==0.5.1
+      - einops==0.7.0
+      - hydra-core==1.3.2
+      - imageio==2.33.1
+      - imageio-ffmpeg==0.4.9
+      - jaxtyping==0.2.25
+      - lpips==0.1.4
+      - matplotlib==3.8.2
+      - moviepy==1.0.3
+      - natsort==8.4.0
+      - plyfile==1.0.3
+      - pytorch-lightning==2.2.0
+      - ruff==0.1.11
+      - scikit-image==0.22.0
+      - svg-py==1.4.2
+      - tabulate==0.9.0
+      - timm==0.9.12
+      - tqdm==4.66.1
+      - transformers==4.37.2
+      - wandb==0.16.2
+      - git+https://github.com/Chrixtar/latent-gaussian-rasterization

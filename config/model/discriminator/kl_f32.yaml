@@ -1,0 +1,10 @@
+name: patch_gan
+model: kl_f32
+
+base_dim: 64
+max_dim_mult: 8
+n_layers: 3
+downscale_factor: 2
+kernel_size: 4
+padding: 1
+leaky_relu_neg_slope: 0.2

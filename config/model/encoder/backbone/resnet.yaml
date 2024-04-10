@@ -1,0 +1,5 @@
+name: resnet
+
+model: microsoft/resnet-50
+num_layers: 5
+use_first_pool: false

@@ -1,0 +1,74 @@
+# @package _global_
+
+defaults:
+  - override /dataset: re10k
+
+dataset:
+  view_sampler:
+    index_path: assets/evaluation_index/re10k_extra.json
+
+evaluation:
+  methods:
+    - name: Ours
+      key: ours
+      path: outputs/test/re10k_extra
+    - name: pixelSplat~\cite{charatan23pixelsplat}
+      key: pixelsplat
+      path: pixelsplat/outputs/test/re10k_extra
+    - name: Du et al.~\cite{cross_attn}
+      key: du2023
+      path: cross_attention_renderer/eval_outputs_re10k_extra
+    - name: pixelNeRF~\cite{yu2021pixelnerf}
+      key: pixelnerf
+      path: pixel-nerf/rendered_images_re10k_extra
+
+  side_by_side_path: null
+  animate_side_by_side: false
+  highlighted:
+# Teaser
+    - scene: 3b6d8db52c54b174
+      context_index: [14, 72]
+      target_index: [9, 76]
+    - scene: 0d4de33c6888a754
+      context_index: [19, 67]
+      target_index: [0, 78]
+
+# Paper
+    - scene: 08e076c11a67b54b
+      context_index: [53, 104]
+      target_index: 32
+    - scene: 685da2e45eda4f92
+      context_index: [56, 117]
+      target_index: 21
+    - scene: 4befac16ffdf8489
+      context_index: [17, 105]
+      target_index: 4
+
+# Supplement
+    - scene: 8a8289629784b1ba
+      context_index: [46, 92]
+      target_index: 16
+    - scene: 98d424814d7399ee
+      context_index: [92, 141]
+      target_index: 150
+    - scene: 138bb7b0b25e4669
+      context_index: [59, 176]
+      target_index: 56
+    - scene: d0d176ef9f64504c
+      context_index: [69, 164]
+      target_index: 54
+    - scene: d064c864bda4430e
+      context_index: [25, 87]
+      target_index: 15
+    - scene: 0ab14ffa7e541b0b
+      context_index: [10, 63]
+      target_index: 77
+    - scene: 0b4d5beb7d3bd867
+      context_index: [1, 107]
+      target_index: 129
+    - scene: 0d08611c8b251e15
+      context_index: [47, 106]
+      target_index: 15
+
+output_metrics_path: baselines/re10k_extra/evaluation_metrics.json
+per_scene_metrics_path: baselines/re10k_extra/per_scene_metrics.json

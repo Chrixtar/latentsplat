@@ -1,0 +1,41 @@
+# @package _global_
+
+defaults:
+  - override /dataset: co3d_teddybear
+  - override /model/autoencoder: kl_f8_skip
+  - override /model/encoder: epipolar
+  - override /model/discriminator: kl_f8
+
+model:
+  autoencoder:
+    skip_connections: true
+  encoder:
+    epipolar_transformer:
+      downscale: 4
+      self_attention:
+        patch_size: 4
+  supersampling_factor: 8
+  variational: gaussians
+
+loss:
+  target:
+    render:
+      image:
+        nll:
+          - {name: mse, weight: 10}
+          - {name: lpips, weight: 0.5, apply_after_step: 50_000}
+    combined:
+      nll:
+        - {name: l1, apply_after_step: 100_000}
+        - {name: lpips, apply_after_step: 100_000}
+      generator:
+        weight: 0.5
+        apply_after_step: &disc_start 125_000
+      discriminator:
+        loss: hinge
+        apply_after_step: *disc_start
+
+wandb:
+  name: co3d_teddybear
+  tags: [co3d, 256x256]
+  # activated: true

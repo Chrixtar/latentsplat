@@ -1,0 +1,20 @@
+defaults:
+  - view_sampler: bounded
+
+name: co3d
+roots: [datasets/]
+make_baseline_1: true
+augment: true
+scene: teddybear
+planes: [0.5, 40.0]
+
+# splits
+train_split_json: assets/dataset_splits/co3d_teddybear_train.json
+eval_split_json: assets/dataset_splits/co3d_teddybear_eval.json
+
+image_shape: [256, 256]
+background_color: [0.0, 0.0, 0.0]
+cameras_are_circular: true
+
+baseline_epsilon: 1e-3
+max_fov: 100.0

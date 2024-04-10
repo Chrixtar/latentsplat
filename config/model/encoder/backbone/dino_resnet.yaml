@@ -1,0 +1,5 @@
+name: resnet
+
+model: Ramos-Ramos/dino-resnet-50
+num_layers: 4
+use_first_pool: false

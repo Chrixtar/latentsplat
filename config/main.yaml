@@ -1,0 +1,111 @@
+defaults:
+  - dataset: re10k
+  - optional dataset/view_sampler_dataset_specific_config: ${dataset/view_sampler}_${dataset}
+  - model/autoencoder: kl_f8
+  - model/encoder: epipolar
+  - model/decoder: splatting_cuda
+  - optional model/discriminator: null
+
+model:
+  autoencoder:
+    skip_connections: false
+  encode_latents: false
+  supersampling_factor: 1
+  variational: none
+
+freeze:
+  autoencoder: false
+  encoder: false
+  decoder: false
+  discriminator: false
+
+loss:
+  gaussian: null
+  context: null
+#    nll: []
+#    generator: ...
+#    discriminator: ...
+  target:
+    autoencoder: null
+    render:
+      latent: null
+      image: null
+    combined: null
+
+hydra:
+  run:
+    dir: ./outputs/${now:%Y-%m-%d}/${now:%H-%M-%S.%f}
+
+wandb:
+  project: latentsplat
+  entity: placeholder
+  name: placeholder
+  mode: online
+  activated: true
+
+mode: train
+
+dataset:
+  overfit_to_scene: null
+
+data_loader:
+  # Avoid having to spin up new processes to print out visualizations.
+  train:
+    num_workers: 16
+    persistent_workers: true
+    batch_size: 2
+    seed: 1234
+  test:
+    num_workers: 4
+    persistent_workers: false
+    batch_size: 1
+    seed: 2345
+  val:
+    num_workers: 1
+    persistent_workers: true
+    batch_size: 1
+    seed: 3456
+
+optimizer:
+  generator:
+    name: Adam
+    autoencoder_lr: 9.0e-6 # orig 4.5e-6 but doubled because of 2 context views
+    scale_autoencoder_lr: true
+    lr: 1.5e-4
+    scale_lr: false
+    autoencoder_kwargs:
+      betas: [0.5, 0.9]
+    scheduler:
+      name: LinearLR
+      kwargs:
+        start_factor: 5.e-4
+        total_iters: 2000
+    gradient_clip_val: 0.5
+  discriminator:
+    name: Adam
+    lr: 9.0e-6 # orig 4.5e-6 but doubled because of 2 context views
+    scale_lr: true
+    kwargs:
+      betas: [0.5, 0.9]
+
+checkpointing:
+  load: null
+  resume: false
+  every_n_train_steps: 2500
+  save_top_k: -1
+
+train:
+  depth_mode: null
+  extended_visualization: false
+  step_offset: 0
+  video_interpolation: false
+  video_wobble: false
+
+test:
+  output_path: outputs/test
+
+seed: 111123
+
+trainer:
+  max_steps: 200_001
+  val_check_interval: 250

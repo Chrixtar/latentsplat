@@ -1,0 +1,36 @@
+defaults:
+  - dataset: co3d_hydrant
+  - optional dataset/view_sampler_dataset_specific_config: ${dataset/view_sampler}_${dataset}
+  - override dataset/view_sampler: all
+
+dataset:
+  overfit_to_scene: null
+
+data_loader:
+  train:
+    num_workers: 0
+    persistent_workers: true
+    batch_size: 1
+    seed: 1234
+  test:
+    num_workers: 8
+    persistent_workers: false
+    batch_size: 1
+    seed: 2345
+  val:
+    num_workers: 0
+    persistent_workers: true
+    batch_size: 1
+    seed: 3456
+
+index_generator:
+  num_context_pairs_per_scene: 20
+  num_target_views: 3
+  min_context_distance: 16
+  max_context_distance: 25
+  intra_context: true
+  output_path: outputs/evaluation_index_co3d_hydrant_intra
+  save_previews: false
+  seed: 123
+
+seed: 456
