@@ -1,12 +1,10 @@
-# latentSplat
+# latentSplat [ECCV 2024]
 
 [![arXiv](https://img.shields.io/badge/arXiv-2403.16292-b31b1b.svg)](https://arxiv.org/abs/2403.16292)
 
 This is the code for **latentSplat: Autoencoding Variational Gaussians for Fast Generalizable 3D Reconstruction** by Christopher Wewer, Kevin Raj, Eddy Ilg, Bernt Schiele, and Jan Eric Lenssen.
 
-Check out the [project website here](https://geometric-rl.mpi-inf.mpg.de/latentsplat/).
-
-https://github.com/Chrixtar/latentsplat/assets/38473808/c7976773-16ad-4ef1-9526-29ae46221549
+Check out the [project website here](https://geometric-rl.mpi-inf.mpg.de/latentsplat/). We will present our work at [ECCV 2024](https://eccv.ecva.net/Conferences/2024).
 
 ## Installation
 
